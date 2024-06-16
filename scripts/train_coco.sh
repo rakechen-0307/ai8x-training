@@ -1,2 +1,2 @@
 #!/bin/sh
-python train.py --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule.yaml --model ai85tinierssd --use-bias --momentum 0.9 --weight-decay 5e-4 --dataset coco --data ./data/coco --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params.yaml --batch-size 32 "$@" 
+python train.py --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule.yaml --model ai85tinierssd --use-bias --momentum 0.9 --weight-decay 5e-4 --dataset coco --data ./data/coco --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params.yaml --batch-size 16 "$@" 
