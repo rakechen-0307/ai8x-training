@@ -241,10 +241,10 @@ class TinierSSD(nn.Module):
     """
     # Aspect ratios for the 4 prior boxes in each of the four feature map
     default_aspect_ratios = (
-        (1.5, 1.2, 1, 0.75),
-        (1.5, 1.2, 1, 0.75),
-        (1.5, 1.2, 1, 0.75),
-        (1.5, 1.2, 1, 0.75)
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7)
     )
 
     def __init__(self, num_classes,
@@ -465,7 +465,7 @@ class TinierSSD(nn.Module):
         return all_images_boxes, all_images_labels, all_images_scores  # lists of length batch_size
 
 
-def ai85tinierssd(pretrained=False, **kwargs):
+def obstacle_detection(pretrained=False, **kwargs):
     """
     Constructs a Tinier SSD model
     """
