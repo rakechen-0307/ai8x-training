@@ -39,7 +39,7 @@ class COCO(Dataset):
         labels = [obj['category_id'] for obj in target]
 
         # Normalize bbox coordinates
-        normalized_boxes = [[x / width, y / height, w / width, h / height] for x, y, w, h in boxes]
+        normalized_boxes = [[x / width, y / height, (x + w) / width, (y + h) / height] for x, y, w, h in boxes]
 
         # Convert to tensors
         boxes_tensor = torch.as_tensor(normalized_boxes, dtype=torch.float32)
