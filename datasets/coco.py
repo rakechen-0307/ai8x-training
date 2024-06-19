@@ -81,12 +81,12 @@ def get_coco_dataset(data, load_train=True, load_test=True):
     return train_dataset, test_dataset
 
 
-labels = ('car', 'motorcycle', 'pothole', 'powerbox')
+labels = ('car', 'motorcycle', 'powerbox', 'puddle')
 
 datasets = [
     {
         'name': 'coco',
-        'input': (3, 296, 296),
+        'input': (3, 148, 148),
         'output': labels,
         'loader': get_coco_dataset,
         'collate': object_detection_utils.collate_fn
