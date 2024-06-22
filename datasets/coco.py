@@ -86,7 +86,7 @@ labels = ('car', 'motorcycle', 'powerbox', 'puddle')
 datasets = [
     {
         'name': 'coco',
-        'input': (3, 148, 148),
+        'input': (3, 74, 74),
         'output': labels,
         'loader': get_coco_dataset,
         'collate': object_detection_utils.collate_fn
