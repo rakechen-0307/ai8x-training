@@ -81,7 +81,7 @@ def get_coco_dataset(data, load_train=True, load_test=True):
     return train_dataset, test_dataset
 
 
-labels = ('car', 'motorcycle', 'powerbox', 'puddle')
+labels = ('cone', 'motorcycle', 'powerbox')
 
 datasets = [
     {
