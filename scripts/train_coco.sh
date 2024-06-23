@@ -1,2 +1,2 @@
 #!/bin/sh
-python train.py --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule.yaml --model obstacle_detection --use-bias --momentum 0.9 --weight-decay 5e-4 --dataset coco --data ./data/coco --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params.yaml --qat-policy policies/qat_policy.yaml --batch-size 16 "$@" 
+python train.py --epochs 100 --optimizer AdamW --lr 0.001 --compress policies/schedule_coco.yaml --model obstacle_detection --use-bias --momentum 0.9 --weight-decay 5e-4 --dataset coco --data ./data/coco --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_coco.yaml --qat-policy policies/qat_policy_coco.yaml --batch-size 24 "$@" 
