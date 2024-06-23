@@ -5,4 +5,4 @@ multi_box_loss:
 nms:
   min_score: 0.2
   max_overlap: 0.3
-  top_k: 50
+  top_k: 20
