@@ -45,6 +45,7 @@ class COCO(Dataset):
         boxes_tensor = torch.as_tensor(normalized_boxes, dtype=torch.float32)
         labels_tensor = torch.as_tensor(labels, dtype=torch.int64)
 
+        image = np.asarray(image).astype(np.uint8)
         image = self.__normalize_image(image).astype(np.float32)
 
         # Convert PIL image to Torch tensor
