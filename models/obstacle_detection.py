@@ -241,15 +241,15 @@ class TinierSSD(nn.Module):
     """
     # Aspect ratios for the 4 prior boxes in each of the four feature map
     default_aspect_ratios = (
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25)
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7),
+        (1.5, 1.2, 0.95, 0.7)
     )
 
     def __init__(self, num_classes,
                  num_channels=3,  # pylint: disable=unused-argument
-                 dimensions=(128, 128),  # pylint: disable=unused-argument
+                 dimensions=(74, 74),  # pylint: disable=unused-argument
                  aspect_ratios=default_aspect_ratios,
                  device='cpu',
                  **kwargs):

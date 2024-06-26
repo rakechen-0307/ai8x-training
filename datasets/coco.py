@@ -45,6 +45,8 @@ class COCO(Dataset):
         boxes_tensor = torch.as_tensor(normalized_boxes, dtype=torch.float32)
         labels_tensor = torch.as_tensor(labels, dtype=torch.int64)
 
+        image = self.__normalize_image(image).astype(np.float32)
+
         # Convert PIL image to Torch tensor
         new_image = FT.to_tensor(image)
 
@@ -55,8 +57,16 @@ class COCO(Dataset):
     
     def __getitem__(self, idx):
         image, target = self.dataset[idx]
-        image = self.transform(image)
+        if self.transform is not None:
+            image = self.transform(image)
+
         return image, target
+
+    @staticmethod
+    def __normalize_image(image):
+        """Normalizes RGB images
+        """
+        return image / 256
 
 
 def get_coco_dataset(data, load_train=True, load_test=True):
