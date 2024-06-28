@@ -241,10 +241,10 @@ class TinierSSD(nn.Module):
     """
     # Aspect ratios for the 4 prior boxes in each of the four feature map
     default_aspect_ratios = (
-        (1.5, 1.2, 0.95, 0.7),
-        (1.5, 1.2, 0.95, 0.7),
-        (1.5, 1.2, 0.95, 0.7),
-        (1.5, 1.2, 0.95, 0.7)
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25)
     )
 
     def __init__(self, num_classes,
