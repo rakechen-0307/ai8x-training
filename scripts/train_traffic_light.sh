@@ -1,0 +1,2 @@
+#!/bin/sh
+python train.py --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule_traffic_light.yaml --model traffic_light --use-bias --momentum 0.9 --weight-decay 5e-4 --dataset coco --data ./data/traffic-light --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_traffic_light.yaml --qat-policy policies/qat_policy_traffic_light.yaml --batch-size 32 "$@" 
