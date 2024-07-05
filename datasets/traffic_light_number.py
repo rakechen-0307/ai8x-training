@@ -92,11 +92,11 @@ def get_coco_dataset(data, load_train=True, load_test=True):
     return train_dataset, test_dataset
 
 
-labels = ('cone', 'motorcycle', 'powerbox')
+labels = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
 datasets = [
     {
-        'name': 'coco',
+        'name': 'traffic_light_number',
         'input': (3, 74, 74),
         'output': labels,
         'loader': get_coco_dataset,
