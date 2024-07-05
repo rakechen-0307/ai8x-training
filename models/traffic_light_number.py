@@ -156,13 +156,13 @@ class PredictionConvolutions(nn.Module):
                    'conv12_2': 4}
 
         # 4 prior-boxes implies we use 4 different aspect ratios, etc.
-        self.loc_fire8 = ai8x.FusedConv2dBN(32, n_boxes['fire8'] * 2, kernel_size=3, padding=1,
+        self.loc_fire8 = ai8x.FusedConv2dBN(32, n_boxes['fire8'] * 4, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire9 = ai8x.FusedConv2dBN(32, n_boxes['fire9'] * 2, kernel_size=3, padding=1,
+        self.loc_fire9 = ai8x.FusedConv2dBN(32, n_boxes['fire9'] * 4, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire10 = ai8x.FusedConv2dBN(32, n_boxes['fire10'] * 2, kernel_size=3, padding=1,
+        self.loc_fire10 = ai8x.FusedConv2dBN(32, n_boxes['fire10'] * 4, kernel_size=3, padding=1,
                                              **kwargs)
-        self.loc_conv12_2 = ai8x.FusedConv2dBN(16, n_boxes['conv12_2'] * 2, kernel_size=3,
+        self.loc_conv12_2 = ai8x.FusedConv2dBN(16, n_boxes['conv12_2'] * 4, kernel_size=3,
                                                padding=1, **kwargs)
 
         # Class prediction convolutions (predict classes in localization boxes)
