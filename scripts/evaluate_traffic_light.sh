@@ -1,2 +1,2 @@
 #!/bin/sh
-python train.py --deterministic --model traffic_light --use-bias --dataset traffic_light --data ./data/traffic-light --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_traffic_light.yaml --qat-policy policies/qat_policy_traffic_light.yaml --evaluate -8 --exp-load-weights-from ../ai8x-synthesis/trained/traffic_light-qat8-q.pth.tar --save-sample 5 "$@" 
+python train.py --model traffic_light --use-bias --dataset traffic_light --data ./data/traffic-light --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_traffic_light.yaml --qat-policy policies/qat_policy_traffic_light.yaml --evaluate -8 --exp-load-weights-from ../ai8x-synthesis/trained/traffic_light-qat8-q.pth.tar --save-sample 5 "$@" 
