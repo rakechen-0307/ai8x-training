@@ -150,10 +150,10 @@ class PredictionConvolutions(nn.Module):
 
         self.n_classes = n_classes
 
-        n_boxes = {'fire8': 4,
-                   'fire9': 4,
-                   'fire10': 4,
-                   'conv12_2': 4}
+        n_boxes = {'fire8': 1,
+                   'fire9': 1,
+                   'fire10': 1,
+                   'conv12_2': 1}
 
         # 4 prior-boxes implies we use 4 different aspect ratios, etc.
         self.loc_fire8 = ai8x.FusedConv2dBN(32, n_boxes['fire8'] * 4, kernel_size=3, padding=1,
@@ -241,10 +241,10 @@ class TinierSSD(nn.Module):
     """
     # Aspect ratios for the 4 prior boxes in each of the four feature map
     default_aspect_ratios = (
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25),
-        (0.85, 0.6, 0.4, 0.25)
+        (0.95),
+        (0.95),
+        (0.95),
+        (0.95)
     )
 
     def __init__(self, num_classes,
