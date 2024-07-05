@@ -150,19 +150,19 @@ class PredictionConvolutions(nn.Module):
 
         self.n_classes = n_classes
 
-        n_boxes = {'fire8': 2,
-                   'fire9': 2,
-                   'fire10': 2,
-                   'conv12_2': 2}
+        n_boxes = {'fire8': 4,
+                   'fire9': 4,
+                   'fire10': 4,
+                   'conv12_2': 4}
 
         # 4 prior-boxes implies we use 4 different aspect ratios, etc.
-        self.loc_fire8 = ai8x.FusedConv2dBN(32, n_boxes['fire8'] * 4, kernel_size=3, padding=1,
+        self.loc_fire8 = ai8x.FusedConv2dBN(32, n_boxes['fire8'] * 2, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire9 = ai8x.FusedConv2dBN(32, n_boxes['fire9'] * 4, kernel_size=3, padding=1,
+        self.loc_fire9 = ai8x.FusedConv2dBN(32, n_boxes['fire9'] * 2, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire10 = ai8x.FusedConv2dBN(32, n_boxes['fire10'] * 4, kernel_size=3, padding=1,
+        self.loc_fire10 = ai8x.FusedConv2dBN(32, n_boxes['fire10'] * 2, kernel_size=3, padding=1,
                                              **kwargs)
-        self.loc_conv12_2 = ai8x.FusedConv2dBN(16, n_boxes['conv12_2'] * 4, kernel_size=3,
+        self.loc_conv12_2 = ai8x.FusedConv2dBN(16, n_boxes['conv12_2'] * 2, kernel_size=3,
                                                padding=1, **kwargs)
 
         # Class prediction convolutions (predict classes in localization boxes)
@@ -241,10 +241,10 @@ class TinierSSD(nn.Module):
     """
     # Aspect ratios for the 4 prior boxes in each of the four feature map
     default_aspect_ratios = (
-        (0.85, 0.5),
-        (0.85, 0.5),
-        (0.85, 0.5),
-        (0.85, 0.5)
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25),
+        (0.85, 0.6, 0.4, 0.25)
     )
 
     def __init__(self, num_classes,
