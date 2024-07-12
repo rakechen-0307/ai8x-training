@@ -47,22 +47,22 @@ class TinySSDBase(nn.Module):
         super().__init__()
 
         # Standard convolutional layers
-        self.fire1 = ai8x.FusedConv2dBNReLU(3, 8, 3, padding=1, **kwargs)
-        self.fire2 = ai8x.FusedConv2dBNReLU(8, 8, 3, padding=1, **kwargs)
+        self.fire1 = ai8x.FusedConv2dBNReLU(3, 16, 3, padding=1, **kwargs)
+        self.fire2 = ai8x.FusedConv2dBNReLU(16, 16, 3, padding=1, **kwargs)
 
-        self.fire3 = ai8x.FusedMaxPoolConv2dBNReLU(8, 16, 3, padding=1, **kwargs)
-        self.fire4 = ai8x.FusedConv2dBNReLU(16, 16, 3, padding=1, **kwargs)
+        self.fire3 = ai8x.FusedMaxPoolConv2dBNReLU(16, 32, 3, padding=1, **kwargs)
+        self.fire4 = ai8x.FusedConv2dBNReLU(32, 32, 3, padding=1, **kwargs)
 
-        self.fire5 = ai8x.FusedMaxPoolConv2dBNReLU(16, 16, 3, padding=1,
+        self.fire5 = ai8x.FusedMaxPoolConv2dBNReLU(32, 32, 3, padding=1,
                                                    pool_size=3, **kwargs)
-        self.fire6 = ai8x.FusedConv2dBNReLU(16, 16, 3, padding=1, **kwargs)
-        self.fire7 = ai8x.FusedConv2dBNReLU(16, 16, 3, padding=1, **kwargs)
-        self.fire8 = ai8x.FusedConv2dBNReLU(32, 8, 3, padding=1, **kwargs)
+        self.fire6 = ai8x.FusedConv2dBNReLU(32, 32, 3, padding=1, **kwargs)
+        self.fire7 = ai8x.FusedConv2dBNReLU(32, 32, 3, padding=1, **kwargs)
+        self.fire8 = ai8x.FusedConv2dBNReLU(32, 16, 3, padding=1, **kwargs)
 
-        self.fire9 = ai8x.FusedMaxPoolConv2dBNReLU(8, 8, 3, padding=1,
+        self.fire9 = ai8x.FusedMaxPoolConv2dBNReLU(16, 16, 3, padding=1,
                                                    **kwargs)
 
-        self.fire10 = ai8x.FusedMaxPoolConv2dBNReLU(8, 8, 3, padding=1,
+        self.fire10 = ai8x.FusedMaxPoolConv2dBNReLU(16, 16, 3, padding=1,
                                                     pool_size=3, **kwargs)
 
     def forward(self, image):
@@ -99,8 +99,8 @@ class AuxiliaryConvolutions(nn.Module):
         super().__init__()
 
         # Auxiliary/additional convolutions on top of the VGG base
-        self.conv12_1 = ai8x.FusedConv2dBNReLU(8, 4, 3, padding=1, **kwargs)
-        self.conv12_2 = ai8x.FusedMaxPoolConv2dBNReLU(4, 4, 3, padding=1, **kwargs)
+        self.conv12_1 = ai8x.FusedConv2dBNReLU(16, 8, 3, padding=1, **kwargs)
+        self.conv12_2 = ai8x.FusedMaxPoolConv2dBNReLU(8, 8, 3, padding=1, **kwargs)
 
         self.init_conv2d()
 
@@ -156,23 +156,23 @@ class PredictionConvolutions(nn.Module):
                    'conv12_2': 1}
 
         # 4 prior-boxes implies we use 4 different aspect ratios, etc.
-        self.loc_fire8 = ai8x.FusedConv2dBN(8, n_boxes['fire8'] * 4, kernel_size=3, padding=1,
+        self.loc_fire8 = ai8x.FusedConv2dBN(16, n_boxes['fire8'] * 4, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire9 = ai8x.FusedConv2dBN(8, n_boxes['fire9'] * 4, kernel_size=3, padding=1,
+        self.loc_fire9 = ai8x.FusedConv2dBN(16, n_boxes['fire9'] * 4, kernel_size=3, padding=1,
                                             **kwargs)
-        self.loc_fire10 = ai8x.FusedConv2dBN(8, n_boxes['fire10'] * 4, kernel_size=3, padding=1,
+        self.loc_fire10 = ai8x.FusedConv2dBN(16, n_boxes['fire10'] * 4, kernel_size=3, padding=1,
                                              **kwargs)
-        self.loc_conv12_2 = ai8x.FusedConv2dBN(4, n_boxes['conv12_2'] * 4, kernel_size=3,
+        self.loc_conv12_2 = ai8x.FusedConv2dBN(8, n_boxes['conv12_2'] * 4, kernel_size=3,
                                                padding=1, **kwargs)
 
         # Class prediction convolutions (predict classes in localization boxes)
-        self.cl_fire8 = ai8x.FusedConv2dBN(8, n_boxes['fire8'] * n_classes, kernel_size=3,
+        self.cl_fire8 = ai8x.FusedConv2dBN(16, n_boxes['fire8'] * n_classes, kernel_size=3,
                                            padding=1, **kwargs)
-        self.cl_fire9 = ai8x.FusedConv2dBN(8, n_boxes['fire9'] * n_classes, kernel_size=3,
+        self.cl_fire9 = ai8x.FusedConv2dBN(16, n_boxes['fire9'] * n_classes, kernel_size=3,
                                            padding=1, **kwargs)
-        self.cl_fire10 = ai8x.FusedConv2dBN(8, n_boxes['fire10'] * n_classes, kernel_size=3,
+        self.cl_fire10 = ai8x.FusedConv2dBN(16, n_boxes['fire10'] * n_classes, kernel_size=3,
                                             padding=1, **kwargs)
-        self.cl_conv12_2 = ai8x.FusedConv2dBN(4, n_boxes['conv12_2'] * n_classes, kernel_size=3,
+        self.cl_conv12_2 = ai8x.FusedConv2dBN(8, n_boxes['conv12_2'] * n_classes, kernel_size=3,
                                               padding=1, **kwargs)
 
         # Initialize convolutions' parameters
@@ -463,6 +463,7 @@ class TinierSSD(nn.Module):
             all_images_scores.append(image_scores)
 
         return all_images_boxes, all_images_labels, all_images_scores  # lists of length batch_size
+
 
 
 def traffic_light(pretrained=False, **kwargs):
