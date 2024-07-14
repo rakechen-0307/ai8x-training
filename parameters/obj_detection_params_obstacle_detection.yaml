@@ -3,6 +3,6 @@ multi_box_loss:
   alpha: 3
   neg_pos_ratio: 4
 nms:
-  min_score: 0.25
+  min_score: 0.35
   max_overlap: 0.3
   top_k: 20
