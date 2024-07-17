@@ -4,5 +4,5 @@ multi_box_loss:
   neg_pos_ratio: 4
 nms:
   min_score: 0.3
-  max_overlap: 0.1
-  top_k: 10
+  max_overlap: 0.15
+  top_k: 20

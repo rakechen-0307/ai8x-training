@@ -1,2 +1,2 @@
 #!/bin/sh
-python train.py --deterministic --model cone --batch-size 24 --use-bias --dataset obstacle_detection --data ./data/cone --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_cone.yaml --qat-policy policies/qat_policy_cone.yaml --evaluate -8 --exp-load-weights-from ../ai8x-synthesis/trained/cone-qat8-q.pth.tar --save-sample 10 "$@" 
+python train.py --deterministic --model cone --batch-size 24 --use-bias --dataset cone --data ./data/cone --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_cone.yaml --qat-policy policies/qat_policy_cone.yaml --evaluate -8 --exp-load-weights-from ../ai8x-synthesis/trained/cone-qat8-q.pth.tar --save-sample 10 "$@" 

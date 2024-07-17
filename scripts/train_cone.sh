@@ -1,2 +1,2 @@
 #!/bin/sh
-python train.py --deterministic --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule_cone.yaml --model obstacle_detection --use-bias --momentum 0.9 --weight-decay 0 --dataset cone --data ./data/cone --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_cone.yaml --qat-policy policies/qat_policy_cone.yaml --batch-size 24 "$@" 
+python train.py --deterministic --epochs 100 --optimizer Adam --lr 0.001 --compress policies/schedule_cone.yaml --model cone --use-bias --momentum 0.9 --weight-decay 0 --dataset cone --data ./data/cone --device MAX78000 --obj-detection --obj-detection-params parameters/obj_detection_params_cone.yaml --qat-policy policies/qat_policy_cone.yaml --batch-size 24 "$@" 

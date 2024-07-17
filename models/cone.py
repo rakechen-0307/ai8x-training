@@ -300,9 +300,9 @@ class TinierSSD(nn.Module):
         fmaps = list(fmap_dims.keys())
 
         obj_scales = {'fire8': 0.2,
-                      'fire9': 0.4,
-                      'fire10': 0.6,
-                      'conv12_2': 0.8}
+                      'fire9': 0.3,
+                      'fire10': 0.4,
+                      'conv12_2': 0.5}
 
         if len(aspect_ratios) != len(fmaps):
             raise ValueError(f'aspect_ratios list should have length {len(fmaps)}')
